@@ -31,6 +31,8 @@ public class Warteg {
             System.out.print("> ");
             kode = read.nextInt();
 
+            //gunakan switch case pada bagian bagan.
+
             switch (kode) {
                 case 1:
                     // pesan;
