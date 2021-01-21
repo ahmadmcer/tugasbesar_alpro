@@ -92,6 +92,38 @@ public class Warteg {
 
     }
 
+    public static void bayar(){
+        int total, kode;
+        boolean ulangi;
+        Scanner read = new Scanner(System.in);
+
+    /*    total = 0;
+
+        System.out.println("Total pesanan\t: ");
+        for (int harga : total) {
+            total += harga;
+        }
+        System.out.println(total +"\n ");
+        System.out.println("1. Bayar ");
+        System.out.println("0. Kembali ");
+
+        do {
+            ulangi = true;
+            System.out.println("> ");
+            kode = read.nextInt();
+
+            switch (kode){
+                case 1:
+                    //daftarPesanan[][] = new String;
+                    break;
+                case 0:
+                    ulangi = false;
+                    break;
+            }
+        } while (ulangi);
+    */
+    }
+
     public static void pesanMakanan() {
 
     }
