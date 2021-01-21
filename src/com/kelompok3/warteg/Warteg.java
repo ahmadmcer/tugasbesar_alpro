@@ -104,18 +104,18 @@ public class Warteg {
         // Inisialisasi scanner
         Scanner read = new Scanner(System.in);
 
-        // Inisialisasi variabel
-        String[][] daftarMakanan;
+        // Inisialisasi variabel untuk menyimpan pesanan
         String[][] daftarPesanan;
-        int[] daftarHarga;
-        int[] totalPesanan;
+        int[] hargaPesanan;
+
+        // Inisialisasi variabel untuk daftar menu makanan beserta harganya
+        String[] daftarMakanan = {"Nasi Satu Porsi", "Nasi Setengah Porsi", "Bakwan Jagung", "Bakwan Sayur", "Tempe Goreng", "Tempe Tepung", "Acar Timun", "Berkedel", "Kentang Balado", "Kerupuk", "Mie Goreng", "Pare", "Sayur Asem", "Sayur Bayam", "Sayur Daun Singkong", "Sayur Kangkung", "Sayur Labu", "Sayur Oyong", "Sayur Sop", "Sayur Tahu", "Sayur Tauge", "Sayur Urap", "Tahu Bacem", "Tahu Goreng", "Tempe Orek Basah", "Tempe Orek Kering", "Terong Balado", "Tumis Jamur", "Tumis Kacang", "Pisang", "Kerang", "Kikil", "Peyek Udang", "Sayur Udang", "Telur Bulat", "Telur Ceplok", "Telur Dadar", "Telur Kecap", "Telur Puyuh", "Teri Balado", "Telur Asin", "Cumi Sambel", "Ikan Goreng", "Ikan Pari", "Ikan Sambel", "Ayam Kecap", "Ayam Opor", "Ayam Sambel", "Ikan Mas Kuning", "Ayam Goreng", "Rendang", "Sayur Nangka", "Kopi", "Kopi Susu", "Susu", "Es Teh Manis", "Extra Joss", "Nutri Sari", "Teh Manis", "Es Jeruk", "Jeruk Anget"};
+        int[] hargaMakanan = {5000, 4000, 1000, 1000, 1000, 1000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 3000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 5000, 7000, 7000, 7000, 7000, 8000, 8000, 8000, 8000, 12000, 12000, 12000, 3000, 3000, 3000, 4000, 4000, 4000, 4000, 5000, 5000};
+
+        // Inisialisasi variabel untuk memasukkan kode perintah
         int kode;
         boolean ulangi;
         boolean kembali;
-
-        // Inisialisasi daftar menu dan daftar harga makanan
-        // daftarMakanan = {{}};
-        // daftarHarga = {};
 
         do {
             kembali = true;
@@ -135,11 +135,11 @@ public class Warteg {
 
                 switch (kode) {
                     case 1:
-                        // pesan;
+                        // pesanMakanan(daftarPesanan, hargaPesanan);
                         ulangi = false;
                         break;
                     case 2:
-                        // keranjang;
+                        // lihatPesanan(daftarPesanan, hargaPesanan);
                         ulangi = false;
                         break;
                     case 0:
