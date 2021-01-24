@@ -2,6 +2,7 @@ package com.kelompok3.warteg;
 import java.util.Scanner;
 
 public class Warteg {
+
     public static void urut(){
         Scanner read = new Scanner(System.in);
         String[][] daftarPesananTerurutkan;
@@ -92,9 +93,7 @@ public class Warteg {
 
     }
 
-    public static void bayar(){
-        int total, kode;
-        boolean ulangi;
+    public static void bayar(boolean ulangi, int total, int kode ){
         Scanner read = new Scanner(System.in);
 
     /*    total = 0;
@@ -124,8 +123,59 @@ public class Warteg {
     */
     }
 
-    public static void pesanMakanan() {
+    public static void pesanMakanan(int[][] daftarPesanan) {
 
+        Scanner read = new Scanner(System.in);
+        int kode;
+        boolean ulangi;
+
+        System.out.println("Daftar pesanan");
+        for (int i = 0; i < daftarPesanan.length; i++) {
+            System.out.println(i+1 +" ");
+            for (int j = 0; j < daftarPesanan[i].length; j++) {
+                System.out.println(daftarPesanan[i][j]);
+                if (j < daftarPesanan[i].length - 1)
+                    System.out.println(" ");
+            }
+            System.out.println("1. Ubah pesanan");
+            System.out.println("2. Hapus pesanan");
+            System.out.println("3. Urutkan Pesanan");
+            System.out.println("4. Bayar pesanan");
+            System.out.println("0. Kembali");
+
+            do {
+                ulangi=true;
+
+                System.out.println("> ");
+                kode = read.nextInt();
+
+                switch (kode){
+                    case 1:
+                        //C. Ubah pesanan
+                    break;
+                    case 2:
+                        //D. Hapus pesanan
+                    break;
+                    case 3:
+                        //E. Urutkan pesanan
+                        urut();
+                    break;
+                    case 4:
+                        //F. Bayar pesanan
+                        //bayar();
+                    break;
+                    case 0:
+                        //0. Kembali
+                        ulangi = false;
+                        break;
+                    default:
+                        System.out.println("\n[EROR] Maaf, kode tidak dikenali!");
+                        break;
+
+
+                }
+            }while (ulangi);
+        }
     }
 
     public static void lihatPesanan() {
