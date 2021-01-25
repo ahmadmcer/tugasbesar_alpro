@@ -190,22 +190,16 @@ public class Warteg {
             hargaPesanan = new int[hargaPesanan.length + 1];
 
             for (int i = 0; i < tempString.length; i++) {
-                for (int j = 0; j < tempString[i].length; j++) {
-                    daftarPesanan[i][j] = tempString[i][j];
-                }
+                System.arraycopy(tempString[i], 0, daftarPesanan[i], 0, tempString[i].length);
 
                 hargaPesanan[i] = tempInt[i];
             }
 
-            for (int i = 0; i < pesanan.length; i++) {
-                daftarPesanan[daftarPesanan.length - 1][i] = pesanan[i];
-            }
+            System.arraycopy(pesanan, 0, daftarPesanan[daftarPesanan.length - 1], 0, pesanan.length);
 
             hargaPesanan[hargaPesanan.length - 1] = harga;
         } else {
-            for (int i = 0; i < pesanan.length; i++) {
-                daftarPesanan[ubahNomor - 1][i] = pesanan[i];
-            }
+            System.arraycopy(pesanan, 0, daftarPesanan[ubahNomor - 1], 0, pesanan.length);
 
             hargaPesanan[ubahNomor - 1] = harga;
         }
@@ -314,15 +308,11 @@ public class Warteg {
 
                 for (int i = 0; i < daftarPesanan.length; i++) {
                     if (i < kode) {
-                        for (int j = 0; j < daftarPesanan[i].length; j++) {
-                            daftarPesanan[i][j] = tempString[i][j];
-                        }
+                        System.arraycopy(tempString[i], 0, daftarPesanan[i], 0, daftarPesanan[i].length);
 
                         hargaPesanan[i] = tempInt[i];
                     } else {
-                        for (int j = 0; j < daftarPesanan[i].length; j++) {
-                            daftarPesanan[i][j] = tempString[i + 1][j];
-                        }
+                        System.arraycopy(tempString[i + 1], 0, daftarPesanan[i], 0, daftarPesanan[i].length);
 
                         hargaPesanan[i] = tempInt[i + 1];
                     }
