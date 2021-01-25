@@ -333,14 +333,9 @@ public class Warteg {
         } while (ulangi);
     }
 
-    public static void urut(){
-        Scanner read = new Scanner(System.in);
+    public static void urutPesanan(){
         String[][] daftarPesananTerurutkan;
-        String[] totalPesananTerurutkan;
-        String[] arrayTemp;
-        int temp;
-        boolean ulangi, kembali;
-        int kode;
+        int[] hargaPesananTerurutkan;
 
         do {
             kembali = true;
@@ -354,21 +349,20 @@ public class Warteg {
                 ulangi = true;
 
                 System.out.print("> ");
-                kode = read.nextInt();
+                kode = readNum.nextInt();
 
                 switch (kode){
-                    case 1: // mengurutkan menaik
-                /*      daftarPesananTerurutkan = daftarPesanan;
-                        totalPesananTerurutkan = totalPesanan;
+                    case 1:
+                        daftarPesananTerurutkan = daftarPesanan;
+                        hargaPesananTerurutkan = hargaPesanan;
 
-                        //berdasarkan harga
                         System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
-                        for (int i = 0; i < totalPesananTerurutkan.length - 1; i++) {
-                            for (int j = 0; j < totalPesananTerurutkan.length -i -1; j++) {
-                                if (totalPesananTerurutkan[j] > totalPesananTerurutkan[j + 1])
-                                    arrayTemp = totalPesananTerurutkan[j];
-                                    totalPesananTerurutkan[j] = totalPesananTerurutkan[j+1];
-                                    totalPesananTerurutkan[j+1] = arrayTemp;
+                        for (int i = 0; i < hargaPesananTerurutkan.length - 1; i++) {
+                            for (int j = 0; j < hargaPesananTerurutkan.length - i - 1; j++) {
+                                if (hargaPesananTerurutkan[j] > hargaPesananTerurutkan[j + 1])
+                                    int tempInt = hargaPesananTerurutkan[j];
+                                    hargaPesananTerurutkan[j] = hargaPesananTerurutkan[j+1];
+                                    hargaPesananTerurutkan[j+1] = tempInt;
                             }
                         }
                         for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
@@ -380,12 +374,11 @@ public class Warteg {
                             }
                             System.out.println("\t: Rp"+ totalPesanan[i] +"\n");
                         }
-                */
                         ulangi = false;
                         break;
                     case 2: // mengurutkan menurun
                     /*    daftarPesananTerurutkan = daftarPesanan;
-                        totalPesananTerurutkan = totalPesanan;
+                        hargaPesananTerurutkan = totalPesanan;
 
                         //berdasarkan harga
                         System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
