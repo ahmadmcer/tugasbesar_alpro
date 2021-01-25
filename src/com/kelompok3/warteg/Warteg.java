@@ -217,7 +217,7 @@ public class Warteg {
 
             System.out.println("\nLIHAT PESANAN");
             for (int i = 0; i < daftarPesanan.length; i++) {
-                System.out.print((i + 1) + ". ");
+                System.out.print((i + 1) + ". " + "Rp " + hargaPesanan[i] + "\t: ");
                 for (int j = 0; j < daftarPesanan[i].length; j++) {
                     System.out.print(daftarPesanan[i][j]);
                     if (j < daftarPesanan[i].length - 1) {
@@ -225,7 +225,7 @@ public class Warteg {
                     }
                 }
 
-                System.out.println("\t: Rp " + hargaPesanan[i]);
+                System.out.println();
             }
 
             System.out.println("\n1. Ubah Pesanan");
