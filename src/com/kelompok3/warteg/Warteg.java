@@ -1,4 +1,5 @@
 package com.kelompok3.warteg;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Warteg {
@@ -254,6 +255,8 @@ public class Warteg {
                         kembali = true;
                         break;
                     case 3:
+                        urutPesanan();
+
                         ulangi = false;
                         kembali = true;
                         break;
@@ -356,58 +359,71 @@ public class Warteg {
                         daftarPesananTerurutkan = daftarPesanan;
                         hargaPesananTerurutkan = hargaPesanan;
 
-                        System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
+                        System.out.println("\nDAFTAR PESANAN MENAIK");
                         for (int i = 0; i < hargaPesananTerurutkan.length - 1; i++) {
                             for (int j = 0; j < hargaPesananTerurutkan.length - i - 1; j++) {
                                 if (hargaPesananTerurutkan[j] > hargaPesananTerurutkan[j + 1]) {
                                     String[] tempString = daftarPesananTerurutkan[j];
-
+                                    daftarPesananTerurutkan[j] = daftarPesananTerurutkan[j + 1];
+                                    daftarPesananTerurutkan[j + 1] = tempString;
 
                                     int tempInt = hargaPesananTerurutkan[j];
                                     hargaPesananTerurutkan[j] = hargaPesananTerurutkan[j + 1];
                                     hargaPesananTerurutkan[j + 1] = tempInt;
-
                                 }
                             }
                         }
-                        for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
-                            System.out.println(i+1 +" ");
-                            for (int j = 0; j < daftarPesananTerurutkan.length; j++) {
-                                System.out.println(daftarPesananTerurutkan[i][j]);
-                                if (j < daftarPesananTerurutkan.length - 1)
-                                    System.out.println(",");
-                            }
-                            System.out.println("\t: Rp"+ hargaPesananTerurutkan[i] +"\n");
-                        }
-                        ulangi = false;
-                        break;
-                    case 2: // mengurutkan menurun
-                    /*    daftarPesananTerurutkan = daftarPesanan;
-                        hargaPesananTerurutkan = totalPesanan;
 
-                        //berdasarkan harga
-                        System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
-                        for (int i = 0; i < totalPesananTerurutkan.length - 1; i++) {
-                            for (int j = 0; j < totalPesananTerurutkan.length -i -1; j++) {
-                                if (totalPesananTerurutkan[j] < totalPesananTerurutkan[j + 1])
-                                    arrayTemp = totalPesananTerurutkan[j];
-                                totalPesananTerurutkan[j] = totalPesananTerurutkan[j+1];
-                                totalPesananTerurutkan[j+1] = arrayTemp;
-                            }
-                        }
+
                         for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
-                            System.out.println(i+1 +" ");
-                            for (int j = 0; j < daftarPesananTerurutkan.length; j++) {
-                                System.out.println(daftarPesananTerurutkan[i][j]);
-                                if (j < daftarPesananTerurutkan.length - 1)
-                                    System.out.println(",");
+                            System.out.print((i + 1) + ". " + "Rp " + hargaPesananTerurutkan[i] + "\t: ");
+                            for (int j = 0; j < daftarPesananTerurutkan[i].length; j++) {
+                                System.out.print(daftarPesananTerurutkan[i][j]);
+                                if (j < daftarPesananTerurutkan[i].length - 1) {
+                                    System.out.print(", ");
+                                }
                             }
-                            System.out.println("\t: Rp"+ totalPesanan[i] +"\n");
+
+                            System.out.println();
                         }
-                    */
+
                         ulangi = false;
                         break;
-                    case 0: //pengulangan / kembali
+                    case 2:
+                        daftarPesananTerurutkan = daftarPesanan;
+                        hargaPesananTerurutkan = hargaPesanan;
+
+                        System.out.println("\nDAFTAR PESANAN MENURUN");
+                        for (int i = 0; i < hargaPesananTerurutkan.length - 1; i++) {
+                            for (int j = 0; j < hargaPesananTerurutkan.length - i - 1; j++) {
+                                if (hargaPesananTerurutkan[j] < hargaPesananTerurutkan[j + 1]) {
+                                    String[] tempString = daftarPesananTerurutkan[j];
+                                    daftarPesananTerurutkan[j] = daftarPesananTerurutkan[j + 1];
+                                    daftarPesananTerurutkan[j + 1] = tempString;
+
+                                    int tempInt = hargaPesananTerurutkan[j];
+                                    hargaPesananTerurutkan[j] = hargaPesananTerurutkan[j + 1];
+                                    hargaPesananTerurutkan[j + 1] = tempInt;
+                                }
+                            }
+                        }
+
+
+                        for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
+                            System.out.print((i + 1) + ". " + "Rp " + hargaPesananTerurutkan[i] + "\t: ");
+                            for (int j = 0; j < daftarPesananTerurutkan[i].length; j++) {
+                                System.out.print(daftarPesananTerurutkan[i][j]);
+                                if (j < daftarPesananTerurutkan[i].length - 1) {
+                                    System.out.print(", ");
+                                }
+                            }
+
+                            System.out.println();
+                        }
+
+                        ulangi = false;
+                        break;
+                    case 0:
                         ulangi = false;
                         kembali = false;
                         break;
@@ -415,7 +431,6 @@ public class Warteg {
                         System.out.println("\n[EROR] Maaf, kode tidak dikenali!");
                         break;
                 }
-
             } while (ulangi);
         }while (kembali);
 
@@ -456,6 +471,7 @@ public class Warteg {
             kembali = true;
 
             // Tampilkan Beranda
+
             System.out.println("\nWARTEG ONLINE");
             System.out.println("1. Pesan Makanan");
             System.out.println("2. Lihat Pesanan");
