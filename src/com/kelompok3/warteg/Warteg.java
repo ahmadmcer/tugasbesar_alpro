@@ -139,7 +139,7 @@ public class Warteg {
     */
     }
 
-    public static void pesanMakanan() {
+    public static void pesanMakanan(int ubahNomor) {
         // Inisialisasi variabel untuk menampung pesanan dan harga sementara
         String[] pesanan = new String[5];
         int harga = 0;
@@ -303,25 +303,32 @@ public class Warteg {
             } while (ulangi);
         } while (kembali);
 
-        // Menambahkan indeks baru ke daftarPesanan untuk menampung pesanan baru
-        String[][] tempString = daftarPesanan;
-        int[] tempInt = hargaPesanan;
-        daftarPesanan = new String[daftarPesanan.length + 1][5];
-        hargaPesanan = new int[hargaPesanan.length + 1];
+        if (ubahNomor == 0) {
+            String[][] tempString = daftarPesanan;
+            int[] tempInt = hargaPesanan;
+            daftarPesanan = new String[daftarPesanan.length + 1][5];
+            hargaPesanan = new int[hargaPesanan.length + 1];
 
-        for (int i = 0; i < tempString.length; i++) {
-            for (int j = 0; j < tempString[i].length; j++) {
-                daftarPesanan[i][j] = tempString[i][j];
+            for (int i = 0; i < tempString.length; i++) {
+                for (int j = 0; j < tempString[i].length; j++) {
+                    daftarPesanan[i][j] = tempString[i][j];
+                }
+
+                hargaPesanan[i] = tempInt[i];
             }
 
-            hargaPesanan[i] = tempInt[i];
-        }
+            for (int i = 0; i < pesanan.length; i++) {
+                daftarPesanan[daftarPesanan.length - 1][i] = pesanan[i];
+            }
 
-        for (int i = 0; i < pesanan.length; i++) {
-            daftarPesanan[daftarPesanan.length - 1][i] = pesanan[i];
-        }
+            hargaPesanan[hargaPesanan.length - 1] = harga;
+        } else {
+            for (int i = 0; i < pesanan.length; i++) {
+                daftarPesanan[ubahNomor - 1][i] = pesanan[i];
+            }
 
-        hargaPesanan[hargaPesanan.length - 1] = harga;
+            hargaPesanan[ubahNomor - 1] = harga;
+        }
     }
 
     public static void lihatPesanan() {
@@ -355,6 +362,8 @@ public class Warteg {
 
                 switch (kode) {
                     case 1:
+                        ubahPesanan();
+
                         ulangi = false;
                         kembali = true;
                         break;
@@ -379,6 +388,28 @@ public class Warteg {
         } while (kembali);
     }
 
+    public static void ubahPesanan() {
+        System.out.println("\nUBAH PESANAN");
+
+        do {
+            ulangi = true;
+
+            System.out.print("Pilih nomor pesanan (ketik 0 untuk kembali) : ");
+            kode = readNum.nextInt();
+            System.out.println(daftarPesanan.length);
+
+            if (kode > 0 && kode <= daftarPesanan.length) {
+                pesanMakanan(kode);
+
+                ulangi = false;
+            } else if (kode == 0) {
+                ulangi = false;
+            } else {
+                System.out.println("\n[EROR] Nomor pesanan tidak ditemukan!");
+            }
+        } while (ulangi);
+    }
+
     public static void main(String[] args) {
         do {
             kembali = true;
@@ -398,12 +429,14 @@ public class Warteg {
 
                 switch (kode) {
                     case 1:
-                        pesanMakanan();
+                        pesanMakanan(0);
+
                         ulangi = false;
                         kembali = true;
                         break;
                     case 2:
                         lihatPesanan();
+
                         ulangi = false;
                         kembali = true;
                         break;
