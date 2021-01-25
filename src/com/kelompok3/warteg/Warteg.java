@@ -359,10 +359,15 @@ public class Warteg {
                         System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
                         for (int i = 0; i < hargaPesananTerurutkan.length - 1; i++) {
                             for (int j = 0; j < hargaPesananTerurutkan.length - i - 1; j++) {
-                                if (hargaPesananTerurutkan[j] > hargaPesananTerurutkan[j + 1])
+                                if (hargaPesananTerurutkan[j] > hargaPesananTerurutkan[j + 1]) {
+                                    String[] tempString = daftarPesananTerurutkan[j];
+
+
                                     int tempInt = hargaPesananTerurutkan[j];
-                                    hargaPesananTerurutkan[j] = hargaPesananTerurutkan[j+1];
-                                    hargaPesananTerurutkan[j+1] = tempInt;
+                                    hargaPesananTerurutkan[j] = hargaPesananTerurutkan[j + 1];
+                                    hargaPesananTerurutkan[j + 1] = tempInt;
+
+                                }
                             }
                         }
                         for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
@@ -372,7 +377,7 @@ public class Warteg {
                                 if (j < daftarPesananTerurutkan.length - 1)
                                     System.out.println(",");
                             }
-                            System.out.println("\t: Rp"+ totalPesanan[i] +"\n");
+                            System.out.println("\t: Rp"+ hargaPesananTerurutkan[i] +"\n");
                         }
                         ulangi = false;
                         break;
