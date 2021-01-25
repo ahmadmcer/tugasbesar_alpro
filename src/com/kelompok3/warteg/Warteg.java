@@ -19,126 +19,6 @@ public class Warteg {
     public static boolean ulangi;
     public static boolean kembali;
 
-    public static void urut(){
-        Scanner read = new Scanner(System.in);
-        String[][] daftarPesananTerurutkan;
-        String[] totalPesananTerurutkan;
-        String[] arrayTemp;
-        int temp;
-        boolean ulangi, kembali;
-        int kode;
-
-        do {
-            kembali = true;
-
-            System.out.println("\nURUT PESANAN");
-            System.out.println("1. Urutkan menaik ");
-            System.out.println("2. Urutkan menurun ");
-            System.out.println("0. Kembali");
-
-            do {
-                ulangi = true;
-
-                System.out.print("> ");
-                kode = read.nextInt();
-
-                switch (kode){
-                    case 1: // mengurutkan menaik
-                /*      daftarPesananTerurutkan = daftarPesanan;
-                        totalPesananTerurutkan = totalPesanan;
-
-                        //berdasarkan harga
-                        System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
-                        for (int i = 0; i < totalPesananTerurutkan.length - 1; i++) {
-                            for (int j = 0; j < totalPesananTerurutkan.length -i -1; j++) {
-                                if (totalPesananTerurutkan[j] > totalPesananTerurutkan[j + 1])
-                                    arrayTemp = totalPesananTerurutkan[j];
-                                    totalPesananTerurutkan[j] = totalPesananTerurutkan[j+1];
-                                    totalPesananTerurutkan[j+1] = arrayTemp;
-                            }
-                        }
-                        for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
-                            System.out.println(i+1 +" ");
-                            for (int j = 0; j < daftarPesananTerurutkan.length; j++) {
-                                System.out.println(daftarPesananTerurutkan[i][j]);
-                                if (j < daftarPesananTerurutkan.length - 1)
-                                    System.out.println(",");
-                            }
-                            System.out.println("\t: Rp"+ totalPesanan[i] +"\n");
-                        }
-                */
-                        ulangi = false;
-                        break;
-                    case 2: // mengurutkan menurun
-                    /*    daftarPesananTerurutkan = daftarPesanan;
-                        totalPesananTerurutkan = totalPesanan;
-
-                        //berdasarkan harga
-                        System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
-                        for (int i = 0; i < totalPesananTerurutkan.length - 1; i++) {
-                            for (int j = 0; j < totalPesananTerurutkan.length -i -1; j++) {
-                                if (totalPesananTerurutkan[j] < totalPesananTerurutkan[j + 1])
-                                    arrayTemp = totalPesananTerurutkan[j];
-                                totalPesananTerurutkan[j] = totalPesananTerurutkan[j+1];
-                                totalPesananTerurutkan[j+1] = arrayTemp;
-                            }
-                        }
-                        for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
-                            System.out.println(i+1 +" ");
-                            for (int j = 0; j < daftarPesananTerurutkan.length; j++) {
-                                System.out.println(daftarPesananTerurutkan[i][j]);
-                                if (j < daftarPesananTerurutkan.length - 1)
-                                    System.out.println(",");
-                            }
-                            System.out.println("\t: Rp"+ totalPesanan[i] +"\n");
-                        }
-                    */
-                        ulangi = false;
-                        break;
-                    case 0: //pengulangan / kembali
-                        ulangi = false;
-                        kembali = false;
-                        break;
-                    default:
-                        System.out.println("\n[EROR] Maaf, kode tidak dikenali!");
-                        break;
-                }
-
-            } while (ulangi);
-        }while (kembali);
-
-    }
-
-    public static void bayar(boolean ulangi, int total, int kode ){
-        Scanner read = new Scanner(System.in);
-
-    /*    total = 0;
-
-        System.out.println("Total pesanan\t: ");
-        for (int harga : total) {
-            total += harga;
-        }
-        System.out.println(total +"\n ");
-        System.out.println("1. Bayar ");
-        System.out.println("0. Kembali ");
-
-        do {
-            ulangi = true;
-            System.out.println("> ");
-            kode = read.nextInt();
-
-            switch (kode){
-                case 1:
-                    //daftarPesanan[][] = new String;
-                    break;
-                case 0:
-                    ulangi = false;
-                    break;
-            }
-        } while (ulangi);
-    */
-    }
-
     public static void pesanMakanan(int ubahNomor) {
         // Inisialisasi variabel untuk menampung pesanan dan harga sementara
         String[] pesanan = new String[5];
@@ -368,6 +248,8 @@ public class Warteg {
                         kembali = true;
                         break;
                     case 2:
+                        hapusPesanan();
+
                         ulangi = false;
                         kembali = true;
                         break;
@@ -408,6 +290,167 @@ public class Warteg {
                 System.out.println("\n[EROR] Nomor pesanan tidak ditemukan!");
             }
         } while (ulangi);
+    }
+
+    public static void hapusPesanan() {
+        System.out.println("\nHAPUS PESANAN");
+
+        do {
+            ulangi = true;
+
+            System.out.print("Pilih nomor pesanan (ketik 0 untuk kembali) : ");
+            kode = readNum.nextInt();
+            System.out.println(daftarPesanan.length);
+
+            if (kode > 0 && kode <= daftarPesanan.length) {
+                String[][] tempString = daftarPesanan;
+                int[] tempInt = hargaPesanan;
+                daftarPesanan = new String[daftarPesanan.length - 1][5];
+                hargaPesanan = new int[hargaPesanan.length - 1];
+
+                for (int i = 0; i < daftarPesanan.length; i++) {
+                    if (i < kode) {
+                        for (int j = 0; j < daftarPesanan[i].length; j++) {
+                            daftarPesanan[i][j] = tempString[i][j];
+                        }
+
+                        hargaPesanan[i] = tempInt[i];
+                    } else {
+                        for (int j = 0; j < daftarPesanan[i].length; j++) {
+                            daftarPesanan[i][j] = tempString[i + 1][j];
+                        }
+
+                        hargaPesanan[i] = tempInt[i + 1];
+                    }
+                }
+
+                ulangi = false;
+            } else if (kode == 0) {
+                ulangi = false;
+            } else {
+                System.out.println("\n[EROR] Nomor pesanan tidak ditemukan!");
+            }
+        } while (ulangi);
+    }
+
+    public static void urut(){
+        Scanner read = new Scanner(System.in);
+        String[][] daftarPesananTerurutkan;
+        String[] totalPesananTerurutkan;
+        String[] arrayTemp;
+        int temp;
+        boolean ulangi, kembali;
+        int kode;
+
+        do {
+            kembali = true;
+
+            System.out.println("\nURUT PESANAN");
+            System.out.println("1. Urutkan menaik ");
+            System.out.println("2. Urutkan menurun ");
+            System.out.println("0. Kembali");
+
+            do {
+                ulangi = true;
+
+                System.out.print("> ");
+                kode = read.nextInt();
+
+                switch (kode){
+                    case 1: // mengurutkan menaik
+                /*      daftarPesananTerurutkan = daftarPesanan;
+                        totalPesananTerurutkan = totalPesanan;
+
+                        //berdasarkan harga
+                        System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
+                        for (int i = 0; i < totalPesananTerurutkan.length - 1; i++) {
+                            for (int j = 0; j < totalPesananTerurutkan.length -i -1; j++) {
+                                if (totalPesananTerurutkan[j] > totalPesananTerurutkan[j + 1])
+                                    arrayTemp = totalPesananTerurutkan[j];
+                                    totalPesananTerurutkan[j] = totalPesananTerurutkan[j+1];
+                                    totalPesananTerurutkan[j+1] = arrayTemp;
+                            }
+                        }
+                        for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
+                            System.out.println(i+1 +" ");
+                            for (int j = 0; j < daftarPesananTerurutkan.length; j++) {
+                                System.out.println(daftarPesananTerurutkan[i][j]);
+                                if (j < daftarPesananTerurutkan.length - 1)
+                                    System.out.println(",");
+                            }
+                            System.out.println("\t: Rp"+ totalPesanan[i] +"\n");
+                        }
+                */
+                        ulangi = false;
+                        break;
+                    case 2: // mengurutkan menurun
+                    /*    daftarPesananTerurutkan = daftarPesanan;
+                        totalPesananTerurutkan = totalPesanan;
+
+                        //berdasarkan harga
+                        System.out.println("Daftar pesanan diurutkan menaik berdasarkan harga");
+                        for (int i = 0; i < totalPesananTerurutkan.length - 1; i++) {
+                            for (int j = 0; j < totalPesananTerurutkan.length -i -1; j++) {
+                                if (totalPesananTerurutkan[j] < totalPesananTerurutkan[j + 1])
+                                    arrayTemp = totalPesananTerurutkan[j];
+                                totalPesananTerurutkan[j] = totalPesananTerurutkan[j+1];
+                                totalPesananTerurutkan[j+1] = arrayTemp;
+                            }
+                        }
+                        for (int i = 0; i < daftarPesananTerurutkan.length; i++) {
+                            System.out.println(i+1 +" ");
+                            for (int j = 0; j < daftarPesananTerurutkan.length; j++) {
+                                System.out.println(daftarPesananTerurutkan[i][j]);
+                                if (j < daftarPesananTerurutkan.length - 1)
+                                    System.out.println(",");
+                            }
+                            System.out.println("\t: Rp"+ totalPesanan[i] +"\n");
+                        }
+                    */
+                        ulangi = false;
+                        break;
+                    case 0: //pengulangan / kembali
+                        ulangi = false;
+                        kembali = false;
+                        break;
+                    default:
+                        System.out.println("\n[EROR] Maaf, kode tidak dikenali!");
+                        break;
+                }
+
+            } while (ulangi);
+        }while (kembali);
+
+    }
+
+    public static void bayar(boolean ulangi, int total, int kode ){
+        Scanner read = new Scanner(System.in);
+
+    /*    total = 0;
+
+        System.out.println("Total pesanan\t: ");
+        for (int harga : total) {
+            total += harga;
+        }
+        System.out.println(total +"\n ");
+        System.out.println("1. Bayar ");
+        System.out.println("0. Kembali ");
+
+        do {
+            ulangi = true;
+            System.out.println("> ");
+            kode = read.nextInt();
+
+            switch (kode){
+                case 1:
+                    //daftarPesanan[][] = new String;
+                    break;
+                case 0:
+                    ulangi = false;
+                    break;
+            }
+        } while (ulangi);
+    */
     }
 
     public static void main(String[] args) {
