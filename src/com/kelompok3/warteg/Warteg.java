@@ -2,6 +2,21 @@ package com.kelompok3.warteg;
 import java.util.Scanner;
 
 public class Warteg {
+    // Inisialisasi scanner
+    public static Scanner read = new Scanner(System.in);
+
+    // Inisialisasi variabel untuk menyimpan pesanan
+    public static String[][] daftarPesanan;
+    public static int[] hargaPesanan;
+
+    // Inisialisasi variabel untuk daftar menu makanan beserta harganya
+    public static String[] daftarMakanan = {"Nasi Satu Porsi", "Nasi Setengah Porsi", "Bakwan Jagung", "Bakwan Sayur", "Tempe Goreng", "Tempe Tepung", "Acar Timun", "Berkedel", "Kentang Balado", "Kerupuk", "Mie Goreng", "Pare", "Sayur Asem", "Sayur Bayam", "Sayur Daun Singkong", "Sayur Kangkung", "Sayur Labu", "Sayur Oyong", "Sayur Sop", "Sayur Tahu", "Sayur Tauge", "Sayur Urap", "Tahu Bacem", "Tahu Goreng", "Tempe Orek Basah", "Tempe Orek Kering", "Terong Balado", "Tumis Jamur", "Tumis Kacang", "Pisang", "Kerang", "Kikil", "Peyek Udang", "Sayur Udang", "Telur Bulat", "Telur Ceplok", "Telur Dadar", "Telur Kecap", "Telur Puyuh", "Teri Balado", "Telur Asin", "Cumi Sambel", "Ikan Goreng", "Ikan Pari", "Ikan Sambel", "Ayam Kecap", "Ayam Opor", "Ayam Sambel", "Ikan Mas Kuning", "Ayam Goreng", "Rendang", "Sayur Nangka", "Kopi", "Kopi Susu", "Susu", "Es Teh Manis", "Extra Joss", "Nutri Sari", "Teh Manis", "Es Jeruk", "Jeruk Anget"};
+    public static int[] hargaMakanan = {5000, 4000, 1000, 1000, 1000, 1000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 3000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 5000, 7000, 7000, 7000, 7000, 8000, 8000, 8000, 8000, 12000, 12000, 12000, 3000, 3000, 3000, 4000, 4000, 4000, 4000, 5000, 5000};
+
+    // Inisialisasi variabel untuk memasukkan kode perintah
+    public static int kode;
+    public static boolean ulangi;
+    public static boolean kembali;
 
     public static void urut(){
         Scanner read = new Scanner(System.in);
@@ -123,59 +138,26 @@ public class Warteg {
     */
     }
 
-    public static void pesanMakanan(int[][] daftarPesanan) {
-
+    public static void pesanMakanan() {
+        // Inisialisasi scanner
         Scanner read = new Scanner(System.in);
+
+        // Inisialisasi variabel untuk memasukkan kode perintah
         int kode;
         boolean ulangi;
+        boolean kembali;
 
-        System.out.println("Daftar pesanan");
-        for (int i = 0; i < daftarPesanan.length; i++) {
-            System.out.println(i+1 +" ");
-            for (int j = 0; j < daftarPesanan[i].length; j++) {
-                System.out.println(daftarPesanan[i][j]);
-                if (j < daftarPesanan[i].length - 1)
-                    System.out.println(" ");
-            }
-            System.out.println("1. Ubah pesanan");
-            System.out.println("2. Hapus pesanan");
-            System.out.println("3. Urutkan Pesanan");
-            System.out.println("4. Bayar pesanan");
-            System.out.println("0. Kembali");
+        do {
+            kembali = true;
+
+            System.out.println("PESAN MAKANAN");
 
             do {
-                ulangi=true;
+                ulangi = true;
 
-                System.out.println("> ");
-                kode = read.nextInt();
-
-                switch (kode){
-                    case 1:
-                        //C. Ubah pesanan
-                    break;
-                    case 2:
-                        //D. Hapus pesanan
-                    break;
-                    case 3:
-                        //E. Urutkan pesanan
-                        urut();
-                    break;
-                    case 4:
-                        //F. Bayar pesanan
-                        //bayar();
-                    break;
-                    case 0:
-                        //0. Kembali
-                        ulangi = false;
-                        break;
-                    default:
-                        System.out.println("\n[EROR] Maaf, kode tidak dikenali!");
-                        break;
-
-
-                }
-            }while (ulangi);
-        }
+                System.out.println();
+            } while (ulangi);
+        } while (kembali);
     }
 
     public static void lihatPesanan() {
@@ -183,22 +165,6 @@ public class Warteg {
     }
 
     public static void main(String[] args) {
-        // Inisialisasi scanner
-        Scanner read = new Scanner(System.in);
-
-        // Inisialisasi variabel untuk menyimpan pesanan
-        String[][] daftarPesanan;
-        int[] hargaPesanan;
-
-        // Inisialisasi variabel untuk daftar menu makanan beserta harganya
-        String[] daftarMakanan = {"Nasi Satu Porsi", "Nasi Setengah Porsi", "Bakwan Jagung", "Bakwan Sayur", "Tempe Goreng", "Tempe Tepung", "Acar Timun", "Berkedel", "Kentang Balado", "Kerupuk", "Mie Goreng", "Pare", "Sayur Asem", "Sayur Bayam", "Sayur Daun Singkong", "Sayur Kangkung", "Sayur Labu", "Sayur Oyong", "Sayur Sop", "Sayur Tahu", "Sayur Tauge", "Sayur Urap", "Tahu Bacem", "Tahu Goreng", "Tempe Orek Basah", "Tempe Orek Kering", "Terong Balado", "Tumis Jamur", "Tumis Kacang", "Pisang", "Kerang", "Kikil", "Peyek Udang", "Sayur Udang", "Telur Bulat", "Telur Ceplok", "Telur Dadar", "Telur Kecap", "Telur Puyuh", "Teri Balado", "Telur Asin", "Cumi Sambel", "Ikan Goreng", "Ikan Pari", "Ikan Sambel", "Ayam Kecap", "Ayam Opor", "Ayam Sambel", "Ikan Mas Kuning", "Ayam Goreng", "Rendang", "Sayur Nangka", "Kopi", "Kopi Susu", "Susu", "Es Teh Manis", "Extra Joss", "Nutri Sari", "Teh Manis", "Es Jeruk", "Jeruk Anget"};
-        int[] hargaMakanan = {5000, 4000, 1000, 1000, 1000, 1000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 3000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 4000, 5000, 7000, 7000, 7000, 7000, 8000, 8000, 8000, 8000, 12000, 12000, 12000, 3000, 3000, 3000, 4000, 4000, 4000, 4000, 5000, 5000};
-
-        // Inisialisasi variabel untuk memasukkan kode perintah
-        int kode;
-        boolean ulangi;
-        boolean kembali;
-
         do {
             kembali = true;
 
