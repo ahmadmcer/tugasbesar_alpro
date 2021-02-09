@@ -19,6 +19,9 @@ public class Warteg {
     public static boolean ulangi;
     public static boolean kembali;
 
+    // Pesan Makanan
+    // Jika ubahNomor 0, maka pesan dan menyimpan pesanan baru
+    // Jika ubahNomor selain 0, maka pesan dan merubah sesuai nomor pesanan
     public static void pesanMakanan(int ubahNomor) {
         // Inisialisasi variabel untuk menampung pesanan dan harga sementara
         String[] pesanan = new String[5];
@@ -57,42 +60,55 @@ public class Warteg {
 
         // Cari 3 lauk
         for (int n = 1; n <= 3; n++) {
+            // Perulangan untuk kembali cari ulang
             do {
                 kembali = true;
 
+                // Inisialisasi variabel untuk menampung hasil carian
                 String[] daftarLauk = new String[0];
                 int[] hargaLauk = new int[0];
                 int kodeLauk = 0;
                 String cari;
 
                 System.out.println("\nLauk " + n);
+                // Perulangan untuk mengulangi cari lauk jika nama lauk tidak ditemukan
                 do {
                     ulangi = true;
 
                     System.out.print("Cari lauk : ");
                     cari = readTxt.nextLine();
 
-                    for (int i = 2; i < 51; i++) {
+                    // Pencarian lauk menggunakan sequential search
+                    for (int i = 2; i <= 51; i++) {
                         if (daftarMakanan[i].toLowerCase().contains(cari.toLowerCase())) {
+                            // Menyimpan hasil carian
+                            // Inisialisasi array sementara untuk menampung daftarLauk dan hargaLauk yang lama
                             String[] tempString = daftarLauk;
                             int[] tempInt = hargaLauk;
 
+                            // Inisialisasi daftarLauk dan hargaLauk dengan indeks masing-masing ditambah 1
                             daftarLauk = new String[daftarLauk.length + 1];
                             hargaLauk = new int[hargaLauk.length + 1];
 
+                            // Menyimpan kembali array sementara ke daftarLauk dan hargaLauk yang baru
                             for (int j = 0; j < tempString.length; j++) {
                                 daftarLauk[j] = tempString[j];
                                 hargaLauk[j] = tempInt[j];
                             }
 
+                            // Menyimpan hasil carian ke indeks terakhir daftarLauk dan hargaLauk yang baru
                             daftarLauk[daftarLauk.length - 1] = daftarMakanan[i];
                             hargaLauk[hargaLauk.length - 1] = hargaMakanan[i];
 
+                            // Kode lauk ditambahkan 1
                             kodeLauk += 1;
-                            System.out.println(kodeLauk + " (Rp " + hargaMakanan[i] + ") " + daftarMakanan[i]);
+
+                            // Tampilkan hasi carian
+                            System.out.println(kodeLauk + ". (Rp " + hargaMakanan[i] + ") " + daftarMakanan[i]);
                         }
                     }
 
+                    // Mengecek lauk ditemukan atau tidak
                     if (kodeLauk > 0) {
                         ulangi = false;
                     } else {
@@ -104,6 +120,8 @@ public class Warteg {
 
                 // Input kode
                 do {
+                    ulangi = true;
+
                     System.out.print("> ");
                     kode = readNum.nextInt();
 
@@ -115,6 +133,8 @@ public class Warteg {
                         kembali = false;
                     } else if (kode == 0) {
                         ulangi = false;
+                    } else {
+                        System.out.println("\n[EROR] Kode tidak dikenali!");
                     }
                 } while (ulangi);
             } while (kembali);
@@ -136,7 +156,7 @@ public class Warteg {
                 System.out.print("Cari minuman : ");
                 cari = readTxt.nextLine();
 
-                for (int i = 52; i < 60; i++) {
+                for (int i = 52; i <= 60; i++) {
                     if (daftarMakanan[i].toLowerCase().contains(cari.toLowerCase())) {
                         String[] tempString = daftarMinuman;
                         int[] tempInt = hargaMinuman;
@@ -153,7 +173,7 @@ public class Warteg {
                         hargaMinuman[hargaMinuman.length - 1] = hargaMakanan[i];
 
                         kodeMinuman += 1;
-                        System.out.println(kodeMinuman + " (Rp " + hargaMakanan[i] + ") " + daftarMakanan[i]);
+                        System.out.println(kodeMinuman + ". (Rp " + hargaMakanan[i] + ") " + daftarMakanan[i]);
                     }
                 }
 
@@ -168,6 +188,8 @@ public class Warteg {
 
             // Input kode
             do {
+                ulangi = true;
+
                 System.out.print("> ");
                 kode = readNum.nextInt();
 
@@ -179,11 +201,15 @@ public class Warteg {
                     kembali = false;
                 } else if (kode == 0) {
                     ulangi = false;
+                } else {
+                    System.out.println("\n[EROR] Kode tidak dikenali!");
                 }
             } while (ulangi);
         } while (kembali);
 
+        // Mengecek apakah pesan baru atau ubah pesanan
         if (ubahNomor == 0) {
+            // Menyimpan pesanan baru
             String[][] tempString = daftarPesanan;
             int[] tempInt = hargaPesanan;
             daftarPesanan = new String[daftarPesanan.length + 1][5];
@@ -199,16 +225,19 @@ public class Warteg {
 
             hargaPesanan[hargaPesanan.length - 1] = harga;
         } else {
+            // Mengubah pesanan
             System.arraycopy(pesanan, 0, daftarPesanan[ubahNomor - 1], 0, pesanan.length);
 
             hargaPesanan[ubahNomor - 1] = harga;
         }
     }
 
+    // Lihat Pesanan
     public static void lihatPesanan() {
         do {
             kembali = true;
 
+            // Tampilkan seluruh pesanan
             System.out.println("\nLIHAT PESANAN");
             for (int i = 0; i < daftarPesanan.length; i++) {
                 System.out.print((i + 1) + ". " + "Rp " + hargaPesanan[i] + "\t: ");
@@ -268,6 +297,7 @@ public class Warteg {
         } while (kembali);
     }
 
+    // Ubah Pesanan
     public static void ubahPesanan() {
         System.out.println("\nUBAH PESANAN");
 
@@ -290,12 +320,14 @@ public class Warteg {
         } while (ulangi);
     }
 
+    // Hapus Pesanan
     public static void hapusPesanan() {
         System.out.println("\nHAPUS PESANAN");
 
         do {
             ulangi = true;
 
+            // Pilih nomor pesanan
             System.out.print("Pilih nomor pesanan (ketik 0 untuk kembali) : ");
             kode = readNum.nextInt();
             System.out.println(daftarPesanan.length);
@@ -327,6 +359,7 @@ public class Warteg {
         } while (ulangi);
     }
 
+    // Urut Pesanan
     public static void urutPesanan(){
         String[][] daftarPesananTerurutkan;
         int[] hargaPesananTerurutkan;
@@ -426,6 +459,7 @@ public class Warteg {
 
     }
 
+    // Bayar Pesanan
     public static void bayarPesanan(){
         int totalPesanan = 0;
 
@@ -459,24 +493,27 @@ public class Warteg {
         } while (ulangi);
     }
 
+    // Program Utama
     public static void main(String[] args) {
+        // Perulangan untuk kembali ke beranda
         do {
             kembali = true;
 
             // Tampilkan Beranda
-
             System.out.println("\nWARTEG ONLINE");
             System.out.println("1. Pesan Makanan");
             System.out.println("2. Lihat Pesanan");
             System.out.println("0. Tutup Aplikasi");
 
             // Masukkan kode
+            // Perulangan untuk mengulangi masukkan kode jika kode salah
             do {
                 ulangi = true;
 
                 System.out.print("> ");
                 kode = readNum.nextInt();
 
+                // Mengecek kode
                 switch (kode) {
                     case 1:
                         pesanMakanan(0);
